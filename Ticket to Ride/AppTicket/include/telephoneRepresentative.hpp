@@ -15,7 +15,7 @@ class TelephoneRepresentative
         ~TelephoneRepresentative(); 
         
     private: 
-       string representativeName = "", surname = "", id = ""; 
+       string representativeName, surname, id; 
 
 };
 

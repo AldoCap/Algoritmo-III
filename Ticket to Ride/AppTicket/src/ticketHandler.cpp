@@ -2,7 +2,6 @@
 
 TicketHandler::TicketHandler()
 {
-
 }
 
 void TicketHandler::createTicket( TelephoneRepresentativeHandler* telephoneRepresentativeHandler,
@@ -12,7 +11,7 @@ void TicketHandler::createTicket( TelephoneRepresentativeHandler* telephoneRepre
 } 
 string TicketHandler::updateStatus(string uuid)
 {
-    return this->idClient; 
+    return this->idClient = uuid; 
 }
 
 void TicketHandler::sendNotification(string uuid)

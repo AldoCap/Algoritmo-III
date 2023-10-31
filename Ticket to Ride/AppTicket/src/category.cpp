@@ -1,9 +1,7 @@
 #include "../include/category.hpp"
 
-Category::Category(string name, string description)
+Category::Category()
 {
-    this->name = name; 
-    this->description = description; 
 }
 
 Category::~Category()

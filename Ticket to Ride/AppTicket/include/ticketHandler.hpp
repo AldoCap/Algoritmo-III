@@ -4,6 +4,7 @@
 #include <iostream>
 #include "./telephoneRepresentativeHandler.hpp"
 #include "./client.hpp"
+
 using namespace std;
 
 class TicketHandler
@@ -20,10 +21,11 @@ class TicketHandler
         ~TicketHandler(); 
         
     private: 
-        string representativeId = "", nameClient = "", 
-            surnameClient = "" ,idClient = "", description=""; 
         TelephoneRepresentativeHandler* telephoneRepresentativeHandler;
+        string representativeId, nameClient,surnameClient,idClient, description; 
         Client* client;  
+        int maxLength = 100; 
+        string *ticketStorage = new string [maxLength]; 
 };
 
 #endif

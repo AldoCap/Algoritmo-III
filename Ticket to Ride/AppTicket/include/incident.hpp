@@ -19,8 +19,8 @@ class Incident
         ~Incident(); 
         
     private: 
-        string representativeId = "", nameClient = "", 
-            category = "" ,idClient = "", description=""; 
+        string representativeId, nameClient, 
+            category,idClient, description; 
 
 };
 

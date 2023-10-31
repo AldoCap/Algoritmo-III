@@ -17,9 +17,9 @@ class ClientHandler
         ~ClientHandler(); 
         
     private: 
-        string  uuid, data; 
+        string  uuid, data, name, surname, mail; 
         Client * client; 
-
+        int maxLength = 100; 
+        string *clientStorage = new string [maxLength];
 };
-
 #endif

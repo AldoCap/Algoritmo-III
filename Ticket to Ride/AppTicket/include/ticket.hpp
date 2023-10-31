@@ -17,8 +17,8 @@ class Ticket
         ~Ticket(); 
         
     private: 
-        string representativeId = "", nameClient = "", 
-            surnameClient = "" ,idClient = "", description=""; 
+        string representativeId, nameClient, 
+            surnameClient,idClient, description; 
 
 };
 

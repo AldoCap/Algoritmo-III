@@ -8,7 +8,7 @@ using namespace std;
 class Category 
 {
     public:
-        Category(string name, string description); 
+        Category(); 
         string represntativeId(); 
         string getDescription(); 
         void setName(string); 
@@ -16,8 +16,7 @@ class Category
         ~Category(); 
         
     private: 
-        string name;
-        string description;
+        string name, description;
 
 };
 

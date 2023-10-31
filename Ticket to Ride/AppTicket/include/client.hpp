@@ -17,7 +17,7 @@ class Client
         ~Client(); 
         
     private: 
-        string  name = "",surname = "", id = "", email = ""; 
+        string  name,surname, id, email; 
 
 };
 
