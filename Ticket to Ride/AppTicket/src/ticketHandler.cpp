@@ -2,6 +2,7 @@
 
 TicketHandler::TicketHandler()
 {
+    ticketStorage = new string [maxLength];
 }
 
 void TicketHandler::createTicket( TelephoneRepresentativeHandler* telephoneRepresentativeHandler,

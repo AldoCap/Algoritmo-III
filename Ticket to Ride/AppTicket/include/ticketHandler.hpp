@@ -25,7 +25,7 @@ class TicketHandler
         string representativeId, nameClient,surnameClient,idClient, description; 
         Client* client;  
         int maxLength = 100; 
-        string *ticketStorage = new string [maxLength]; 
+        string *ticketStorage; 
 };
 
 #endif
