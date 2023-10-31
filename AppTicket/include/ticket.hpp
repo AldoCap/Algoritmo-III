@@ -1,24 +1,24 @@
-#ifndef TICKET
-#define TICKET
+#ifndef TICKET__
+#define TICKET__
 #include <string>
 #include <iostream>
-#include "ticketHandler.hpp"
 using namespace std;
 
 class Ticket 
 {
     public:
-        Ticket();  
+        Ticket(string ticketID,string representativeID,string clientID,string priority,string description);  
         void setCategory(string); 
         string getDescription(); 
         void closeTicket(string uuid);
         void viewStatusTicket(string uuid);  
         void setDescription(string); 
+        string getID();
         ~Ticket(); 
         
     private: 
-        string representativeId, nameClient, 
-            surnameClient,idClient, description; 
+        string representativeID, nameClient, 
+            surnameClient,clientID,priority, description,uuid; 
 
 };
 

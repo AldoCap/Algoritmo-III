@@ -2,17 +2,28 @@
 
 TicketHandler::TicketHandler()
 {
-    ticketStorage = new string [maxLength];
 }
-
-void TicketHandler::createTicket( TelephoneRepresentativeHandler* telephoneRepresentativeHandler,
-                            Client* client, string, string)
+void TicketHandler::createTicket(string ticketID,string representativeID, string clientID,string priority,string description)
 {
+    Ticket* ticket = new Ticket(ticketID,representativeID, clientID,priority,description);
 
+    this->ticketStorage.push_back(ticket);
+    
+    cout << "\nTicket: " << ticket->getDescription()<<endl;
 } 
-string TicketHandler::updateStatus(string uuid)
+void TicketHandler::updateStatus(string uuid)
 {
-    return this->idClient = uuid; 
+    for (Ticket* ticket : this->ticketStorage) 
+    {
+        if(ticket->getID() == uuid)
+        {
+            ticket->setCategory("UPDATED");
+        }
+        else
+        {
+            cout << "\nuuid erroneo"<<endl;
+        }
+    }
 }
 
 void TicketHandler::sendNotification(string uuid)

@@ -2,8 +2,11 @@
 #define CATEGORYHANDLER
 #include <string>
 #include <iostream>
-#include "./telephoneRepresentativeHandler.hpp"
-#include "./client.hpp"
+#include <telephoneRepresentativeHandler.hpp>
+#include <clientHandler.hpp>
+#include <ticket.hpp>
+// #include "../include/ticket.hpp"
+#include <vector>
 
 using namespace std;
 
@@ -11,9 +14,8 @@ class TicketHandler
 {
     public:
         TicketHandler();  
-        void createTicket( TelephoneRepresentativeHandler* telephoneRepresentativeHandler,
-                            Client* client, string, string); 
-        string updateStatus(string uuid); 
+        void createTicket(string ticketID,string representativeID, string clientID,string priority,string description); 
+        void updateStatus(string uuid); 
         void sendNotification(string uuid);
         void closeTicket(string uuid);  
         void viewTicket(string uuid); 
@@ -21,11 +23,13 @@ class TicketHandler
         ~TicketHandler(); 
         
     private: 
-        TelephoneRepresentativeHandler* telephoneRepresentativeHandler;
+        TelephoneRepresentativeHandler* telRepreHandler;
+        ClientHandler* clientHandler;  
         string representativeId, nameClient,surnameClient,idClient, description; 
-        Client* client;  
         int maxLength = 100; 
-        string *ticketStorage; 
+        Ticket* ticket;
+        vector<Ticket*> ticketStorage;
+        // vector<string> ticketStorage;
 };
 
 #endif

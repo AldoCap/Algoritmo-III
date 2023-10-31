@@ -6,9 +6,10 @@
 #include "./include/uuid.hpp"
 #include "./include/client.hpp"
 #include <iostream>
+#include <ticketHandler.hpp>
 
 void showMenu(); 
-void createTicket(); 
+void createTicket(string ticketID,string representativeID, string clientID,string priority,string description); 
 void updateTicket(); 
 void closeTicket(); 
 void viewStateTicket(); 
@@ -22,9 +23,11 @@ int main() {
 void showMenu()
 {
     int choice;
-
-    do {
+    string id = "1",idclient = "10",idrepresentative = "100",
+                priority = "high",description = "este es un error del dia"; 
+    do{
         
+
         std::cout << "Menú Principal Ticket" << std::endl;
         std::cout << "1. Creacion Ticket" << std::endl;
         std::cout << "2. Actualizar Ticket" << std::endl;
@@ -34,39 +37,41 @@ void showMenu()
         std::cout << "Elija una opción: ";
         std::cin >> choice;
 
-        switch (choice) {
+        switch (choice) 
+        {
+            case 0:
+                break;
             case 1:
                 std::cout << "Ha seleccionado la Opción 1." << std::endl;
-                void createTicket(); 
+    
+                    createTicket(id,idclient,idrepresentative,priority,description); 
 
                 break;
             case 2:
                 std::cout << "Ha seleccionado la Opción 2." << std::endl;
-                void updateTicket(); 
+                updateTicket(); 
 
                 break;
             case 3:
                 std::cout << "Ha seleccionado la Opción 3." << std::endl;
-                void closeTicket(); 
+                closeTicket(); 
 
                 break;
             case 4:
                 std::cout << "Ha seleccionado la Opción 4." << std::endl;
-                void viewStateTicket(); 
+                viewStateTicket(); 
                 break;
-            case 0:
+            case 5:
                 std::cout << "Saliendo del programa." << std::endl;
-                break;
-            default:
-                std::cout << "Opción no válida. Inténtelo de nuevo." << std::endl;
                 break;
         }
     } while (choice != 0);
 }
 
-void createTicket()
+void createTicket(string ticketID,string representativeID, string clientID,string priority,string description)
 {
-
+    TicketHandler* ticketHandler = new TicketHandler();
+    ticketHandler->createTicket(ticketID,representativeID,clientID,priority,description);
 } 
 void updateTicket()
 {
