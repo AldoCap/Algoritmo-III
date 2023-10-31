@@ -20,6 +20,6 @@ class ClientHandler
         string  uuid, data, name, surname, mail; 
         Client * client; 
         int maxLength = 100; 
-        string *clientStorage = new string [maxLength];
+        string *clientStorage;
 };
 #endif

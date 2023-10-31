@@ -21,7 +21,7 @@ class TelephoneRepresentativeHandler
         int maxLength = 100;  
         string uuid, data; 
         Client *clientData; 
-        string *representativeStorage = new string [maxLength];  
+        string *representativeStorage;  
 
 };
 

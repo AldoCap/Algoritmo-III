@@ -1,8 +1,7 @@
 #include "../include/incident.hpp"
 
 
-Incident::Incident(string representativeId, 
-                        string category, string idClient)
+Incident::Incident(string representativeId,string category, string idClient)
 {
 
 }

@@ -3,7 +3,7 @@
 
 ClientHandler::ClientHandler(string name, string surname, string id, string email)
 {
-
+    clientStorage = new string [maxLength];
 }
 
 string ClientHandler::createClient(Client * client)

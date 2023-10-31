@@ -4,7 +4,7 @@ using namespace std;
 
 TelephoneRepresentativeHandler::TelephoneRepresentativeHandler()
 {
-
+    representativeStorage = new string [maxLength];
 }
 
 string TelephoneRepresentativeHandler::create(Client *clientData)
