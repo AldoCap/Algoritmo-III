@@ -2,14 +2,14 @@
 
 using namespace std;
 
-TelephoneRepresentativeHandler::TelephoneRepresentativeHandler(string, string, string)
+TelephoneRepresentativeHandler::TelephoneRepresentativeHandler()
 {
 
 }
 
-string TelephoneRepresentativeHandler::create(string, string)
+string TelephoneRepresentativeHandler::create(Client *clientData)
 {
-    return this->clientData; 
+    return this->data; 
 } 
 string TelephoneRepresentativeHandler::update(string, string)
 {
