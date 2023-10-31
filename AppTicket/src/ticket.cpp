@@ -9,17 +9,25 @@ Ticket::Ticket(string ticketID,string representativeID,string clientID,string pr
     this->priority =  priority;
     this->description =  description;
 }
-void Ticket::setCategory(string)
+void Ticket::setState(string state)
 {
-
+    this->state = state;
 }
 string Ticket::getDescription()
 {
     return this->description; 
 } 
+string Ticket::getPriority()
+{
+    return this->priority; 
+} 
 string Ticket::getID()
 {
     return this->uuid; 
+} 
+string Ticket::getState()
+{
+    return this->state; 
 } 
 void Ticket::closeTicket(string uuid)
 {
