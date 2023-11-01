@@ -1,6 +1,5 @@
 #include "../include/ticket.hpp"
 
-
 Ticket::Ticket(string ticketID,string representativeID,string clientID,string priority,string description)
 {
     this->uuid =  ticketID;
@@ -9,6 +8,8 @@ Ticket::Ticket(string ticketID,string representativeID,string clientID,string pr
     this->priority =  priority;
     this->description =  description;
 }
+Ticket::Ticket(){}
+
 void Ticket::setState(string state)
 {
     this->state = state;
@@ -31,11 +32,10 @@ string Ticket::getState()
 } 
 void Ticket::closeTicket(string uuid)
 {
-
+    cout <<"Ticket numero: " << uuid << "  Se cerro con exito" << endl;  
 }
 void Ticket::viewStatusTicket(string uuid)
 {
-
 }  
 
 void Ticket::setDescription(string)

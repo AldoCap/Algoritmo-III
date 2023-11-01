@@ -25,7 +25,7 @@ string Menssage::getUserOrigin()
 
 }
         
-void Menssage::setUserTarget(Uuid*uuid)
+void Menssage::setUserTarget(UuId*uuid)
 {
 
 }
@@ -40,7 +40,7 @@ void Menssage::setDate(string)
 
 } 
 
-void Menssage::setUserOrigin(Uuid*uuid)
+void Menssage::setUserOrigin(UuId*uuid)
 {
 
 } 

@@ -9,7 +9,8 @@ using namespace std;
 class Ticket 
 {
     public:
-        Ticket(string ticketID,string representativeID,string clientID,string priority,string description);  
+        Ticket(string ticketID,string representativeID,string clientID,string priority,string description);
+        Ticket();   
         void setState(string); 
         string getDescription(); 
         void closeTicket(string uuid);

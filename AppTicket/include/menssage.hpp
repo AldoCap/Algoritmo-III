@@ -13,10 +13,10 @@ class Menssage
         string getDate(); 
         string getUserTarget(string); 
         string getUserOrigin(); 
-        void setUserTarget(Uuid*uuid); 
+        void setUserTarget(UuId*uuid); 
         void setDescription(string); 
         void setDate(string); 
-        void setUserOrigin(Uuid*uuid); 
+        void setUserOrigin(UuId*uuid); 
         ~Menssage(); 
         
     private: 

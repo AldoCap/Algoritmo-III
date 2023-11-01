@@ -16,9 +16,21 @@ void updateTicket();
 void closeTicket(); 
 void viewStateTicket(); 
 
+string clientID; 
+ClientHandler* clientHandler = new ClientHandler();
+TelephoneRepresentativeHandler* telRepre = new TelephoneRepresentativeHandler();
+TicketHandler* ticketHandler = new TicketHandler();
+Ticket* ticket = new Ticket();
+
 int main() {
     
     showMenu();
+
+    delete clientHandler; 
+    delete telRepre; 
+    delete ticketHandler; 
+    delete ticket; 
+
     return 0;
 }
 
@@ -30,40 +42,37 @@ void showMenu()
     do{
         
 
-        std::cout << "Menú Principal Ticket" << std::endl;
+        std::cout << "Menu Principal Ticket" << std::endl;
         std::cout << "1. Creacion Ticket" << std::endl;
         std::cout << "2. Actualizar Ticket" << std::endl;
         std::cout << "3. Cerrar Ticket" << std::endl;
         std::cout << "4. Ver estado Ticket" << std::endl;
         std::cout << "0. Salir" << std::endl;
-        std::cout << "Elija una opción: ";
+        std::cout << "Elija una opcion: ";
         std::cin >> choice;
 
         switch (choice) 
         {
-            case 0:
-                break;
             case 1:
-                std::cout << "Ha seleccionado la Opción 1." << std::endl;
-    
-                    createTicket(priority,description); 
+                std::cout << "Ha seleccionado la Opcion 1." << std::endl;
+                    createTicket(priority,description);
 
                 break;
             case 2:
-                std::cout << "Ha seleccionado la Opción 2." << std::endl;
+                std::cout << "Ha seleccionado la Opcion 2." << std::endl;
                 updateTicket(); 
 
                 break;
             case 3:
-                std::cout << "Ha seleccionado la Opción 3." << std::endl;
+                std::cout << "Ha seleccionado la Opcion 3." << std::endl;
                 closeTicket(); 
 
                 break;
             case 4:
-                std::cout << "Ha seleccionado la Opción 4." << std::endl;
+                std::cout << "Ha seleccionado la Opcion 4." << std::endl;
                 viewStateTicket(); 
                 break;
-            case 5:
+            case 0:
                 std::cout << "Saliendo del programa." << std::endl;
                 break;
         }
@@ -72,9 +81,6 @@ void showMenu()
 
 void createTicket(string priority,string description)
 {
-    ClientHandler* clientHandler = new ClientHandler();
-    TelephoneRepresentativeHandler* telRepre = new TelephoneRepresentativeHandler();
-
     map<string, string> clientData;
     clientData["name"] = "Aldo";
     clientData["surname"] = "Capurro";
@@ -84,24 +90,23 @@ void createTicket(string priority,string description)
     telRepreData["name"] = "Bet";
     telRepreData["surname"] = "Villanueva";
 
-    string clientID = clientHandler->createClient(clientData);
+    clientID = clientHandler->createClient(clientData);
     string telRepreID= telRepre->create(telRepreData);
 
     clientHandler->readData(clientID);
     telRepre->readData(telRepreID);
 
-    TicketHandler* ticketHandler = new TicketHandler();
     ticketHandler->createTicket(telRepreID,clientID,priority,description);
 } 
 void updateTicket()
 {
-
+    ticket->setState("En tratamiento");
 } 
 void closeTicket()
 {
-
+    ticket->closeTicket("2235"); 
 }
 void viewStateTicket()
 {
-
+  cout << ticket->getState() << endl;  
 }
