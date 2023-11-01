@@ -2,6 +2,8 @@
 #define TICKET__
 #include <string>
 #include <iostream>
+#include <incident.hpp>
+#include <vector>
 using namespace std;
 
 class Ticket 
@@ -16,12 +18,13 @@ class Ticket
         string getPriority();
         string getID();
         string getState();
+        void setIncident(Incident* incident);
         ~Ticket(); 
         
     private: 
         string representativeID, nameClient, 
             surnameClient,clientID,priority, description,uuid,state; 
-
+        vector<Incident*> incidents;
 };
 
 #endif

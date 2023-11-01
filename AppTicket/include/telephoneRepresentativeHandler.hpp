@@ -2,8 +2,10 @@
 #define TELEPHONEREPRESENTATIVEHANDLER
 #include <string>
 #include <iostream>
-#include "telephoneRepresentative.hpp"
-#include "client.hpp"
+#include <vector>
+#include <map>
+#include <telephoneRepresentative.hpp>
+#include <uuid.hpp>
 
 using namespace std;
 
@@ -11,17 +13,17 @@ class TelephoneRepresentativeHandler
 {
     public:
         TelephoneRepresentativeHandler(); 
-        string create(Client *clientData); 
-        string update(string, string); 
-        string view(string);
-        string del(string);
+        string create(map<string, string> telRepreData); 
+        void update(map<string, string> telRepreData,string telRepreID); 
+        void readData(string);
+        string deletetelRepre(string);
         ~TelephoneRepresentativeHandler(); 
         
     private: 
         int maxLength = 100;  
-        string uuid, data; 
-        Client *clientData; 
-        string *representativeStorage;  
+        UuId* uuid;
+        string data; 
+        vector<TelephoneRepresentative*> telRepreStorage;  
 
 };
 

@@ -8,16 +8,19 @@ using namespace std;
 class Client 
 {
     public:
-        Client(string name, string surname, string id, string email); 
+        Client(string id,string name, string surname, string email); 
         string getName(); 
         string getSurname(); 
-        string getId();
+        string getID();
         string getEmail();
+        void setName(string); 
+        void setSurname(string); 
+        void setEmail(string);
         
         ~Client(); 
         
     private: 
-        string  name,surname, id, email; 
+        string  name,surname, ID, email; 
 
 };
 

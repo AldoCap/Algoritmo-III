@@ -1,27 +1,53 @@
-#include "../include/telephoneRepresentativeHandler.hpp"
+#include <telephoneRepresentativeHandler.hpp>
 
 using namespace std;
 
 TelephoneRepresentativeHandler::TelephoneRepresentativeHandler()
 {
-    representativeStorage = new string [maxLength];
+
 }
 
-string TelephoneRepresentativeHandler::create(Client *clientData)
+string TelephoneRepresentativeHandler::create(map<string, string> telRepreData)
 {
-    return this->data; 
+    TelephoneRepresentative* telRepre = new TelephoneRepresentative( this->uuid->createUuid(),telRepreData["name"],telRepreData["surname"]);
+
+    this->telRepreStorage.push_back(telRepre);
+    
+    return telRepre->getID();
 } 
-string TelephoneRepresentativeHandler::update(string, string)
+void TelephoneRepresentativeHandler::update(map<string, string> telRepreData,string telRepreID)
 {
-    return this->uuid; 
+    for (TelephoneRepresentative* telRepre : this->telRepreStorage) 
+    {
+        if(telRepre->getID() == telRepreID)
+        {
+            telRepre->setName(telRepreData["name"]);
+            telRepre->setSurname(telRepreData["surname"]);
+        }
+        else
+        {
+            cout << "\nuuid erroneo"<<endl;
+        }
+    }
 }
 
-string TelephoneRepresentativeHandler::view(string)
+void TelephoneRepresentativeHandler::readData(string telRepreID)
 {
-    return this->uuid; 
+    for (TelephoneRepresentative* telRepre : this->telRepreStorage) 
+    {
+        if(telRepre->getID() == telRepreID)
+        {
+            cout << "\nTel repre name: " << telRepre->getName()<<endl;
+            cout << "\nTel repre surname: " << telRepre->getSurname()<<endl;
+        }
+        else
+        {
+            cout << "\nuuid erroneo"<<endl;
+        }
+    }
 }
         
-string TelephoneRepresentativeHandler::del(string)
+string TelephoneRepresentativeHandler::deletetelRepre(string)
 {
     return this->data; 
 }

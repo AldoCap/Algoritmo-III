@@ -1,15 +1,17 @@
 #include "./include/category.hpp"
 #include "./include/activityLog.hpp"
 #include "./include/communication.hpp"
-#include "./include/telephoneRepresentative.hpp"
 #include "./include/ticket.hpp"
 #include "./include/uuid.hpp"
 #include "./include/client.hpp"
 #include <iostream>
 #include <ticketHandler.hpp>
+#include <telephoneRepresentative.hpp>
+#include <telephoneRepresentativeHandler.hpp>
+#include <map>
 
 void showMenu(); 
-void createTicket(string ticketID,string representativeID, string clientID,string priority,string description); 
+void createTicket(string priority,string description); 
 void updateTicket(); 
 void closeTicket(); 
 void viewStateTicket(); 
@@ -44,7 +46,7 @@ void showMenu()
             case 1:
                 std::cout << "Ha seleccionado la Opción 1." << std::endl;
     
-                    createTicket(id,idclient,idrepresentative,priority,description); 
+                    createTicket(priority,description); 
 
                 break;
             case 2:
@@ -68,10 +70,28 @@ void showMenu()
     } while (choice != 0);
 }
 
-void createTicket(string ticketID,string representativeID, string clientID,string priority,string description)
+void createTicket(string priority,string description)
 {
+    ClientHandler* clientHandler = new ClientHandler();
+    TelephoneRepresentativeHandler* telRepre = new TelephoneRepresentativeHandler();
+
+    map<string, string> clientData;
+    clientData["name"] = "Aldo";
+    clientData["surname"] = "Capurro";
+    clientData["email"] = "Capurro@aldo.com";
+
+    map<string, string> telRepreData;
+    telRepreData["name"] = "Bet";
+    telRepreData["surname"] = "Villanueva";
+
+    string clientID = clientHandler->createClient(clientData);
+    string telRepreID= telRepre->create(telRepreData);
+
+    clientHandler->readData(clientID);
+    telRepre->readData(telRepreID);
+
     TicketHandler* ticketHandler = new TicketHandler();
-    ticketHandler->createTicket(ticketID,representativeID,clientID,priority,description);
+    ticketHandler->createTicket(telRepreID,clientID,priority,description);
 } 
 void updateTicket()
 {

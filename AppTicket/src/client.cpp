@@ -1,11 +1,10 @@
-#include "../include/client.hpp"
+#include <client.hpp>
 
-
-Client::Client(string name, string surname, string id, string email)
+Client::Client(string id,string name, string surname, string email)
 {
+    this->ID = id; 
     this->name = name; 
     this->surname = surname; 
-    this->id = id; 
     this->email = email; 
 }
 string Client::getName()
@@ -18,14 +17,25 @@ string Client::getSurname()
     return this->surname; 
 } 
 
-string Client::getId()
+string Client::getID()
 {
-    return this->id; 
+    return this->ID; 
 }
 
 string Client::getEmail()
 {
     return this->email; 
 }
-        
+void Client::setName(string name)
+{
+    this->name = name;
+}; 
+void Client::setSurname(string surname)
+{
+    this->surname = surname;
+}; 
+void Client::setEmail(string email)
+{
+    this->email = email;
+};       
 Client::~Client(){} 

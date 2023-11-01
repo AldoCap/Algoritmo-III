@@ -2,7 +2,6 @@
 #define INCIDENT    
 #include <string>
 #include <iostream>
-#include "ticketHandler.hpp"
 using namespace std;
 
 class Incident 

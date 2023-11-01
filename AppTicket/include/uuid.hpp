@@ -1,22 +1,20 @@
 #ifndef UUID
 #define UUID
+#include <cstdlib>
+#include <ctime>
 #include <string>
 #include <iostream>
-#include <cstdlib>
-#include <ctime> 
+
 using namespace std;
 
-class Uuid 
+class UuId 
 {
     public:
+        UuId();
+        string createUuid();
+        ~UuId();
 
-        Uuid(string name, string description); 
-        void setUuid(); 
-        string getUuid();  
-        ~Uuid(); 
-        
-    private: 
-        string name = "", description = "";  
-}; 
-
+    private:
+        string uuid;
+};
 #endif

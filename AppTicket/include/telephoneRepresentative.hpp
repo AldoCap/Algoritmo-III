@@ -9,13 +9,15 @@ class TelephoneRepresentative
 {
     public:
         TelephoneRepresentative(string, string, string); 
-        string representativeId(); 
+        string getID(); 
         string getName(); 
-        string getSurName();
+        string getSurname();
+        void setName(string); 
+        void setSurname(string);
         ~TelephoneRepresentative(); 
         
     private: 
-       string representativeName, surname, id; 
+       string name, surname, id; 
 
 };
 

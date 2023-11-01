@@ -2,24 +2,28 @@
 #define CLIENTHANDLER
 #include <string>
 #include <iostream>
-#include "./client.hpp"
+#include <client.hpp>
+#include <map>
+#include <vector>
+#include <uuid.hpp>
+
 using namespace std;
 
 class ClientHandler 
 {
     public:
-        ClientHandler(string name, string surname, string id, string email); 
-        string createClient(Client * client); 
-        void updateClient(string uuid, string data); 
-        void viewClient(string uuid);
-        void del(string uuid);
+        ClientHandler(); 
+        string createClient(map<string, string> clientData); 
+        void updateClient(string uuid,map<string, string> clientData); 
+        void readData(string uuid);
+        void deleteClient(string uuid);
         
         ~ClientHandler(); 
         
     private: 
-        string  uuid, data, name, surname, mail; 
-        Client * client; 
+        string  data, name, surname, mail; 
+        UuId* uuid;
         int maxLength = 100; 
-        string *clientStorage;
+        vector<Client*> clientStorage;
 };
 #endif

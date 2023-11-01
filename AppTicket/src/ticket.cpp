@@ -42,7 +42,10 @@ void Ticket::setDescription(string)
 {
 
 } 
-
+void Ticket::setIncident(Incident* incident)
+{
+    this->incidents.push_back(incident);
+}
 Ticket::~Ticket()
 {
 

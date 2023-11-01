@@ -5,7 +5,8 @@
 #include <telephoneRepresentativeHandler.hpp>
 #include <clientHandler.hpp>
 #include <ticket.hpp>
-// #include "../include/ticket.hpp"
+#include <incident.hpp>
+#include <uuid.hpp>
 #include <vector>
 
 using namespace std;
@@ -14,12 +15,12 @@ class TicketHandler
 {
     public:
         TicketHandler();  
-        void createTicket(string ticketID,string representativeID, string clientID,string priority,string description); 
-        void updateStatus(string uuid); 
-        void sendNotification(string uuid);
-        void closeTicket(string uuid);  
-        void viewTicket(string uuid); 
-        void addIncident(Client* client); 
+        void createTicket(string representativeID, string clientID,string priority,string description); 
+        void updateStatus(string ticketID); 
+        void sendNotification(string ticketID);
+        void closeTicket(string ticketID);  
+        void viewTicket(string ticketID); 
+        void addIncident(Incident* incident,string ticketID); 
         ~TicketHandler(); 
         
     private: 
@@ -29,7 +30,7 @@ class TicketHandler
         int maxLength = 100; 
         Ticket* ticket;
         vector<Ticket*> ticketStorage;
-        // vector<string> ticketStorage;
+        UuId* uuid;
 };
 
 #endif

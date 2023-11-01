@@ -3,19 +3,19 @@
 TicketHandler::TicketHandler()
 {
 }
-void TicketHandler::createTicket(string ticketID,string representativeID, string clientID,string priority,string description)
+void TicketHandler::createTicket(string representativeID, string clientID,string priority,string description)
 {
-    Ticket* ticket = new Ticket(ticketID,representativeID, clientID,priority,description);
+    Ticket* ticket = new Ticket(uuid->createUuid(),representativeID, clientID,priority,description);
 
     this->ticketStorage.push_back(ticket);
 
     cout << "\nTicket: " << ticket->getDescription()<<endl;
 } 
-void TicketHandler::updateStatus(string uuid)
+void TicketHandler::updateStatus(string ticketID)
 {
     for (Ticket* ticket : this->ticketStorage) 
     {
-        if(ticket->getID() == uuid)
+        if(ticket->getID() == ticketID)
         {
             ticket->setState("UPDATED");
         }
@@ -26,16 +26,16 @@ void TicketHandler::updateStatus(string uuid)
     }
 }
 
-void TicketHandler::sendNotification(string uuid)
+void TicketHandler::sendNotification(string ticketID)
 {
 
 }
 
-void TicketHandler::closeTicket(string uuid)
+void TicketHandler::closeTicket(string ticketID)
 {
     for (Ticket* ticket : this->ticketStorage) 
     {
-        if(ticket->getID() == uuid)
+        if(ticket->getID() == ticketID)
         {
             ticket->setState("CLOSED");
         }
@@ -46,11 +46,11 @@ void TicketHandler::closeTicket(string uuid)
     }
 } 
 
-void TicketHandler::viewTicket(string uuid)
+void TicketHandler::viewTicket(string ticketID)
 {
     for (Ticket* ticket : this->ticketStorage) 
     {
-        if(ticket->getID() == uuid)
+        if(ticket->getID() == ticketID)
         {
             cout << "\nTicket Description: " << ticket->getDescription()<<endl;
             cout << "\nTicket priority: " << ticket->getPriority()<<endl;
@@ -63,9 +63,19 @@ void TicketHandler::viewTicket(string uuid)
     }
 }
 
-void TicketHandler::addIncident(Client* client)
+void TicketHandler::addIncident(Incident* incident,string ticketID)
 {
-
+    for (Ticket* ticket : this->ticketStorage) 
+    {
+        if(ticket->getID() == ticketID)
+        {
+            ticket->setIncident(incident);
+        }
+        else
+        {
+            cout << "\nuuid erroneo"<<endl;
+        }
+    }
 }
 
 TicketHandler::~TicketHandler()
