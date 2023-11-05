@@ -3,6 +3,8 @@
 #include <string>
 #include <iostream>
 #include <telephoneRepresentativeHandler.hpp>
+#include <emailCommunication.hpp>
+#include <chatCommunication.hpp>
 #include <clientHandler.hpp>
 #include <ticket.hpp>
 #include <incident.hpp>

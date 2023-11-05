@@ -28,6 +28,8 @@ void TicketHandler::updateStatus(string ticketID)
 
 void TicketHandler::sendNotification(string ticketID)
 {
+    ICommunication* emailCommunication = new EmailCommunication(); 
+    ICommunication* chatCommunication = new ChatCommunication(); 
 
 }
 

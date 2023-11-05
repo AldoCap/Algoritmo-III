@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <client.hpp>
+#include <communication.hpp>
 #include <map>
 #include <vector>
 #include <uuid.hpp>

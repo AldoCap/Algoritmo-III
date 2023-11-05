@@ -1,20 +1,22 @@
+#include <iostream>
+#include <map>
 #include "./include/category.hpp"
 #include "./include/activityLog.hpp"
-#include "./include/communication.hpp"
+//#include "./include/communication.hpp"
 #include "./include/ticket.hpp"
 #include "./include/uuid.hpp"
 #include "./include/client.hpp"
-#include <iostream>
-#include <ticketHandler.hpp>
-#include <telephoneRepresentative.hpp>
-#include <telephoneRepresentativeHandler.hpp>
-#include <map>
+#include "./include/ticketHandler.hpp"
+#include  "./include/telephoneRepresentative.hpp"
+#include  "./include/telephoneRepresentativeHandler.hpp"
+
 
 void showMenu(); 
 void createTicket(string priority,string description); 
 void updateTicket(); 
 void closeTicket(); 
 void viewStateTicket(); 
+void communication(); 
 
 string clientID; 
 ClientHandler* clientHandler = new ClientHandler();
@@ -47,6 +49,7 @@ void showMenu()
         std::cout << "2. Actualizar Ticket" << std::endl;
         std::cout << "3. Cerrar Ticket" << std::endl;
         std::cout << "4. Ver estado Ticket" << std::endl;
+        std::cout << "5. Communication" << std::endl;
         std::cout << "0. Salir" << std::endl;
         std::cout << "Elija una opcion: ";
         std::cin >> choice;
@@ -69,6 +72,10 @@ void showMenu()
 
                 break;
             case 4:
+                std::cout << "Ha seleccionado la Opcion 4." << std::endl;
+                viewStateTicket(); 
+                break;
+            case 5:
                 std::cout << "Ha seleccionado la Opcion 4." << std::endl;
                 viewStateTicket(); 
                 break;
@@ -109,4 +116,8 @@ void closeTicket()
 void viewStateTicket()
 {
   cout << ticket->getState() << endl;  
+}
+void communication()
+{
+    ticketHandler->sendNotification("2235");  
 }
