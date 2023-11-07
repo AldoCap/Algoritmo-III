@@ -7,7 +7,7 @@ ClientHandler::ClientHandler()
 
 string ClientHandler::createClient(map<string, string> clientData)
 {
-    Client* client = new Client(this->uuid->createUuid(),clientData["name"],clientData["surname"],clientData["email"]);
+    Client* client = new Client(this->uuid->createUuid(),clientData["name"],clientData["surname"],clientData["email"], address['address']);
     this->clientStorage.push_back(client);
 
     return client->getID();
@@ -21,6 +21,7 @@ void ClientHandler::updateClient(string clientID, map<string, string> clientData
             client->setName(clientData["name"]);
             client->setSurname(clientData["surname"]);
             client->setEmail(clientData["email"]);
+            client->setEmail(adress['adress']);
         }
         else
         {
@@ -38,6 +39,7 @@ void ClientHandler::readData(string clientID)
             cout << "\nClient name: " << client->getName()<<endl;
             cout << "\nClient surname: " << client->getSurname()<<endl;
             cout << "\nClient email: " << client->getEmail()<<endl;
+            cout << "\nClient adress: " << client->getEmail()<<endl;
         }
         else
         {

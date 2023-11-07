@@ -2,13 +2,14 @@
 #include <map>
 #include "./include/category.hpp"
 #include "./include/activityLog.hpp"
-//#include "./include/communication.hpp"
+#include "./include/communication.hpp"
 #include "./include/ticket.hpp"
 #include "./include/uuid.hpp"
 #include "./include/client.hpp"
 #include "./include/ticketHandler.hpp"
 #include  "./include/telephoneRepresentative.hpp"
 #include  "./include/telephoneRepresentativeHandler.hpp"
+#include "./include/grafo.hpp"
 
 
 void showMenu(); 
@@ -92,18 +93,59 @@ void createTicket(string priority,string description)
     clientData["name"] = "Aldo";
     clientData["surname"] = "Capurro";
     clientData["email"] = "Capurro@aldo.com";
+    clientData["address"] = "Colon 6000";
 
     map<string, string> telRepreData;
     telRepreData["name"] = "Bet";
     telRepreData["surname"] = "Villanueva";
 
+    map<string, string> clientData2;
+    clientData2["name"] = "Pedro";
+    clientData2["surname"] = "Capurro";
+    clientData2["email"] = "Capurro@aldo.com";
+    clientData2["address"] = "San Juan 234";
+
+    map<string, string> clientData3;
+    clientData3["name"] = "Maria";
+    clientData3["surname"] = "Capurro";
+    clientData3["email"] = "Capurro@aldo.com";
+    clientData3["address"] = "SanJuan 234";
+
+
+    map<string, string> clientData4;
+    clientData4["name"] = "Joaquin";
+    clientData4["surname"] = "Capurro";
+    clientData4["email"] = "Capurro@aldo.com";
+    clientData4["address"] = "SanJuan 234";
+
+   map<string, string> clientData5;
+    clientData5["name"] = "Juan";
+    clientData5["surname"] = "Capurro";
+    clientData5["email"] = "Capurro@aldo.com";
+    clientData5["address"] = "SanJuan 234";
+
     clientID = clientHandler->createClient(clientData);
+    clientID2 = clientHandler->createClient(clientData2);
+    clientID3 = clientHandler->createClient(clientData3);
+    clientID4 = clientHandler->createClient(clientData4);
+    clientID5 = clientHandler->createClient(clientData5);
+
+
+
     string telRepreID= telRepre->create(telRepreData);
 
     clientHandler->readData(clientID);
     telRepre->readData(telRepreID);
 
     ticketHandler->createTicket(telRepreID,clientID,priority,description);
+    ticketHandler->createTicket(telRepreID,clientID2,priority,description);
+    ticketHandler->createTicket(telRepreID,clientID3,priority,description);
+    ticketHandler->createTicket(telRepreID,clientID4,priority,description);
+    ticketHandler->createTicket(telRepreID,clientID5,priority,description);
+
+
+
+
 } 
 void updateTicket()
 {

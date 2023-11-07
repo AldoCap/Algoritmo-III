@@ -1,15 +1,10 @@
 #include <grafo.hpp>
 
-class Graph {
-public:
-    Graph(int numVertices);
-    void addEdge(int source, int destination);
-    void displayGraph();
+Graph::Graph(int numVertices)
+{
+    
+}   
 
-private:
-    int numVertices;
-    vector<vector<int>> adjacencyList;
-};
 
 Graph::Graph(int numVertices) {
     this->numVertices = numVertices;

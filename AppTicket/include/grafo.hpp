@@ -16,5 +16,10 @@ public:
 private:
     int numVertices;
     vector<vector<int>> adjacencyList;
+
+    struct Edge {
+    int destination;
+    int weight;
+    }
 };
 #endif

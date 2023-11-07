@@ -39,3 +39,13 @@ void Client::setEmail(string email)
     this->email = email;
 };       
 Client::~Client(){} 
+
+void Client::setAddress(string address)
+{
+    this->address = address;
+};
+
+string Client::getAddress()
+{
+    return this->address;
+};
