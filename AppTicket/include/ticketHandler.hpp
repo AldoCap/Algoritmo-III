@@ -8,6 +8,7 @@
 #include <clientHandler.hpp>
 #include <ticket.hpp>
 #include <incident.hpp>
+#include <grafo.hpp>
 #include <uuid.hpp>
 #include <vector>
 #include <sstream>
@@ -50,6 +51,7 @@ class TicketHandler
         void getShortestpathByDijkstra(int start, int V);
         void fillAdjList(std::vector<Ticket*> ticketStorage);
         void printPath(int);
+        vector<Ticket*> graphHandler(); 
         ~TicketHandler(); 
         
     private: 

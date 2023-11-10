@@ -7,9 +7,15 @@
 #include "./include/uuid.hpp"
 #include "./include/client.hpp"
 #include "./include/ticketHandler.hpp"
+<<<<<<< HEAD
 #include  "./include/telephoneRepresentative.hpp"
 #include  "./include/telephoneRepresentativeHandler.hpp"
 // #include "./include/grafo.hpp"
+=======
+#include "./include/telephoneRepresentative.hpp"
+#include "./include/telephoneRepresentativeHandler.hpp"
+#include "./include/grafo.hpp"
+>>>>>>> a82d01d7b8cc636b3c119adb163a9fc5f788905a
 
 
 void showMenu(); 
@@ -18,12 +24,17 @@ void updateTicket();
 void closeTicket(); 
 void viewStateTicket(); 
 void communication(); 
+<<<<<<< HEAD
+=======
+void graphs(); 
+>>>>>>> a82d01d7b8cc636b3c119adb163a9fc5f788905a
 
 string clientID, clientID2, clientID3, clientID4, clientID5; 
 ClientHandler* clientHandler = new ClientHandler();
 TelephoneRepresentativeHandler* telRepre = new TelephoneRepresentativeHandler();
 TicketHandler* ticketHandler = new TicketHandler();
 Ticket* ticket = new Ticket();
+Graph* graph = new Graph(); 
 
 int main() {
     
@@ -33,6 +44,7 @@ int main() {
     delete telRepre; 
     delete ticketHandler; 
     delete ticket; 
+    delete graph; 
 
     return 0;
 }
@@ -121,6 +133,7 @@ void createTicket(string priority,string description)
    map<string, string> clientData5;
     clientData5["name"] = "Juan";
     clientData5["surname"] = "Capurro";
+<<<<<<< HEAD
     clientData5["email"] = "JuanCapurro@aldo.com";
     clientData5["address"] = "Luro 87";
 
@@ -129,6 +142,16 @@ void createTicket(string priority,string description)
     clientID3 = clientHandler->createClient("3",clientData3);
     clientID4 = clientHandler->createClient("4",clientData4);
     clientID5 = clientHandler->createClient("5",clientData5);
+=======
+    clientData5["email"] = "Capurro@aldo.com";
+    clientData5["address"] = "SanJuan 234";
+
+    clientID = clientHandler->createClient(clientData);
+    clientID2 = clientHandler->createClient(clientData2);
+    clientID3 = clientHandler->createClient(clientData3);
+    clientID4 = clientHandler->createClient(clientData4);
+    clientID5 = clientHandler->createClient(clientData5);
+>>>>>>> a82d01d7b8cc636b3c119adb163a9fc5f788905a
 
     string telRepreID= telRepre->create(telRepreData);
 
@@ -166,3 +189,15 @@ void communication()
 {
     ticketHandler->sendNotification("2235");  
 }
+<<<<<<< HEAD
+=======
+
+void graphs()
+{   
+    graph->init(); 
+    // aca tengo que llamar a clase o funcion para que inicieto grafo
+    ticketHandler->graphHandler(); 
+    graph->printGraph(); 
+     
+}
+>>>>>>> a82d01d7b8cc636b3c119adb163a9fc5f788905a

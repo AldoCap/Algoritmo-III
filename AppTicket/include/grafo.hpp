@@ -2,24 +2,40 @@
 #define GRAFO    
 #include <iostream>
 #include <vector>
-#include <ctime>
-#include <limits>
+#include <queue>
+#include <functional>
 #include <cstdlib>
-#include <algorithm>
+#include <ctime>
+#include <ticketHandler.hpp>
+TicketHandler* ticketHandler; 
 
 using namespace std;
 
 class Graph {
 public:
-    Graph(int numVertices);
-    void addEdge(int source, int destination, int weight);
-    void findShortestPath(int start);
-    const vector<vector<pair<int, int>>> getAdjacencyList();
-    vector<int> getShortestPath(int start, int end);
+    Graph();
+    void init(); 
+    void relaxation(int, int, int); 
+    void dijkstra(); 
+    void print(int); 
+    void printGraph(); 
 
 private:
-    int numVertices;
-    vector<vector<pair<int, int>> > adjacencyList;
-    const int INF = numeric_limits<int>::max();
+    #define MAX 10005
+    typedef pair<int, int> Node;
+    vector<Node> ady[MAX];
+
+    struct cmp {
+    bool operator()(const Node& left, const Node& right) {
+        return left.second > right.second;
+    }
+};
+    int distanc[MAX];
+    bool visited[MAX];
+    int previous[MAX];
+    priority_queue<Node, vector<Node>, cmp> Q;
+    vector<Ticket*> node = ticketHandler->graphHandler();
+    
+
 };
 #endif
