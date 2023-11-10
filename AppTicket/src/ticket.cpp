@@ -1,4 +1,5 @@
-#include "../include/ticket.hpp"
+#include <ticket.hpp>
+// #include "../include/ticket.hpp"
 
 Ticket::Ticket(string ticketID,string representativeID,string clientID,string priority,string description)
 {
@@ -29,6 +30,10 @@ string Ticket::getID()
 string Ticket::getState()
 {
     return this->state; 
+} 
+string Ticket::getClientID()
+{
+    return this->clientID; 
 } 
 void Ticket::closeTicket(string uuid)
 {

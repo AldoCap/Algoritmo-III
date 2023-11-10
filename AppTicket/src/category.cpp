@@ -1,4 +1,4 @@
-#include "../include/category.hpp"
+#include <category.hpp>
 
 Category::Category()
 {

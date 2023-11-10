@@ -1,4 +1,5 @@
-#include "../include/emailCommunication.hpp"
+// #include "../include/emailCommunication.hpp"
+#include <emailCommunication.hpp>
 
 EmailCommunication::EmailCommunication ()
 {

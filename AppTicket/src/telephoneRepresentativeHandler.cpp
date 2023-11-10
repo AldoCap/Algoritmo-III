@@ -9,7 +9,7 @@ TelephoneRepresentativeHandler::TelephoneRepresentativeHandler()
 
 string TelephoneRepresentativeHandler::create(map<string, string> telRepreData)
 {
-    TelephoneRepresentative* telRepre = new TelephoneRepresentative( this->uuid->createUuid(),telRepreData["name"],telRepreData["surname"]);
+    TelephoneRepresentative* telRepre = new TelephoneRepresentative( UuId::generateUuid(),telRepreData["name"],telRepreData["surname"]);
 
     this->telRepreStorage.push_back(telRepre);
     
@@ -26,7 +26,7 @@ void TelephoneRepresentativeHandler::update(map<string, string> telRepreData,str
         }
         else
         {
-            cout << "\nuuid erroneo"<<endl;
+            cout << "\nuuid erroneo: No se pudo actualizae representante"<<endl;
         }
     }
 }
@@ -42,7 +42,7 @@ void TelephoneRepresentativeHandler::readData(string telRepreID)
         }
         else
         {
-            cout << "\nuuid erroneo"<<endl;
+            cout << "\nuuid erroneo: No se pudo ver representante"<<endl;
         }
     }
 }

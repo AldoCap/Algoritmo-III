@@ -1,4 +1,5 @@
-#include "../include/menssage.hpp"
+// #include "../include/menssage.hpp"
+#include <menssage.hpp>
 
 Menssage::Menssage()
 {

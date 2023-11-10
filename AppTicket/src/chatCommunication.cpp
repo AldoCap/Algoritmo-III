@@ -1,4 +1,4 @@
-#include "../include/chatCommunication.hpp"
+#include <chatCommunication.hpp>
 
 ChatCommunication::ChatCommunication()
 {

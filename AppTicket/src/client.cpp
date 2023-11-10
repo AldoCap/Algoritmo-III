@@ -1,11 +1,12 @@
 #include <client.hpp>
 
-Client::Client(string id,string name, string surname, string email)
+Client::Client(string id,string name, string surname, string email,string address)
 {
     this->ID = id; 
     this->name = name; 
     this->surname = surname; 
     this->email = email; 
+    this->address = address; 
 }
 string Client::getName()
 {

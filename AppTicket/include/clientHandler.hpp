@@ -14,7 +14,7 @@ class ClientHandler
 {
     public:
         ClientHandler(); 
-        string createClient(map<string, string> clientData); 
+        string createClient(string id,map<string, string> clientData); 
         void updateClient(string uuid,map<string, string> clientData); 
         void readData(string uuid);
         void deleteClient(string uuid);
@@ -23,7 +23,7 @@ class ClientHandler
         
     private: 
         string  data, name, surname, mail; 
-        UuId* uuid;
+        // UuId* uuid;
         int maxLength = 100; 
         vector<Client*> clientStorage;
 };

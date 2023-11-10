@@ -1,4 +1,5 @@
-#include "../include/activityLog.hpp"
+// #include "../include/activityLog.hpp"
+#include <activityLog.hpp>
 
 ActivityLog::ActivityLog()
 {

@@ -21,7 +21,7 @@ class TelephoneRepresentativeHandler
         
     private: 
         int maxLength = 100;  
-        UuId* uuid;
+        // UuId* uuid;
         string data; 
         vector<TelephoneRepresentative*> telRepreStorage;  
 
