@@ -80,6 +80,11 @@ void TicketHandler::addIncident(Incident* incident,string ticketID)
     }
 }
 
+vector<Ticket*> TicketHandler::graphHandler()
+{
+    return this->ticketStorage; 
+}
+
 TicketHandler::~TicketHandler()
 {
 

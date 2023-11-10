@@ -7,8 +7,8 @@
 #include "./include/uuid.hpp"
 #include "./include/client.hpp"
 #include "./include/ticketHandler.hpp"
-#include  "./include/telephoneRepresentative.hpp"
-#include  "./include/telephoneRepresentativeHandler.hpp"
+#include "./include/telephoneRepresentative.hpp"
+#include "./include/telephoneRepresentativeHandler.hpp"
 #include "./include/grafo.hpp"
 
 
@@ -18,13 +18,14 @@ void updateTicket();
 void closeTicket(); 
 void viewStateTicket(); 
 void communication(); 
-void graph(); 
+void graphs(); 
 
 string clientID, clientID2, clientID3, clientID4, clientID5; 
 ClientHandler* clientHandler = new ClientHandler();
 TelephoneRepresentativeHandler* telRepre = new TelephoneRepresentativeHandler();
 TicketHandler* ticketHandler = new TicketHandler();
 Ticket* ticket = new Ticket();
+Graph* graph = new Graph(); 
 
 int main() {
     
@@ -34,6 +35,7 @@ int main() {
     delete telRepre; 
     delete ticketHandler; 
     delete ticket; 
+    delete graph; 
 
     return 0;
 }
@@ -131,8 +133,6 @@ void createTicket(string priority,string description)
     clientID4 = clientHandler->createClient(clientData4);
     clientID5 = clientHandler->createClient(clientData5);
 
-
-
     string telRepreID= telRepre->create(telRepreData);
 
     clientHandler->readData(clientID);
@@ -162,41 +162,11 @@ void communication()
     ticketHandler->sendNotification("2235");  
 }
 
-void graph()
-{
-     srand(static_cast<unsigned>(time(0)));
-
-    int numVertices = 5;
-    Graph graph(numVertices);
-
-    for (int i = 0; i < numVertices; i++) {
-        for (int j = i + 1; j < numVertices; j++) {
-            if (rand() % 2) {
-                int weight = rand() % 10 + 1;
-                graph.addEdge(i, j, weight);
-            }
-        }
-    }
-
-    int startVertex = 0;
-    cout << "Randomly generated graph:" << endl;
-    const auto& adjacencyList = graph.getAdjacencyList();
-
-    for (int i = 0; i < numVertices; i++) {
-        for (const auto& edge : adjacencyList[i]) {
-            cout << i << " -> " << edge.first << " (weight " << edge.second << ")" << endl;
-        }
-    }
-
-    int endVertex = 4;
-    cout << "\nShortest distances from vertex " << startVertex << " using Dijkstra's algorithm:" << endl;
-    graph.findShortestPath(startVertex);
-
-    vector<int> shortestPath = graph.getShortestPath(startVertex, endVertex);
-
-    cout << "\nShortest path from vertex " << startVertex << " to vertex " << endVertex << ": ";
-    for (int vertex : shortestPath) {
-        cout << vertex << " -> ";
-    }
-    cout << "End" << endl;
+void graphs()
+{   
+    graph->init(); 
+    // aca tengo que llamar a clase o funcion para que inicieto grafo
+    ticketHandler->graphHandler(); 
+    graph->printGraph(); 
+     
 }

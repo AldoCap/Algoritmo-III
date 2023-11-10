@@ -8,6 +8,7 @@
 #include <clientHandler.hpp>
 #include <ticket.hpp>
 #include <incident.hpp>
+#include <grafo.hpp>
 #include <uuid.hpp>
 #include <vector>
 
@@ -23,6 +24,7 @@ class TicketHandler
         void closeTicket(string ticketID);  
         void viewTicket(string ticketID); 
         void addIncident(Incident* incident,string ticketID); 
+        vector<Ticket*> graphHandler(); 
         ~TicketHandler(); 
         
     private: 
