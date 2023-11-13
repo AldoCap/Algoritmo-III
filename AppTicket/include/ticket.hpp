@@ -13,7 +13,7 @@ class Ticket
         Ticket();   
         void setState(string); 
         string getDescription(); 
-        void closeTicket(string uuid);
+        void closeTicket();
         void viewStatusTicket(string uuid);  
         void setDescription(string); 
         string getPriority();

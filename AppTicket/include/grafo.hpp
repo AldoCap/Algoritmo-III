@@ -2,40 +2,47 @@
 #define GRAFO    
 #include <iostream>
 #include <vector>
-#include <queue>
 #include <functional>
 #include <cstdlib>
 #include <ctime>
-#include <ticketHandler.hpp>
-TicketHandler* ticketHandler; 
+#include <queue>
+#include <limits>
+#include <ticket.hpp>
 
 using namespace std;
+const int MAX = 6;  // Tamaño máximo del grafo
 
-class Graph {
-public:
-    Graph();
-    void init(); 
-    void relaxation(int, int, int); 
-    void dijkstra(); 
-    void print(int); 
-    void printGraph(); 
+struct Node 
+{
+    int vertex;  // Vértice vecino
+    int weight;  // Peso de la arista
+    Ticket* ticket;
+};
 
-private:
-    #define MAX 10005
-    typedef pair<int, int> Node;
-    vector<Node> ady[MAX];
-
-    struct cmp {
-    bool operator()(const Node& left, const Node& right) {
-        return left.second > right.second;
+// Definición de comparador para la cola de prioridad
+struct Compare 
+{
+    bool operator()(const Node& a, const Node& b) 
+    {
+        return a.weight > b.weight;  // Ordenar por peso ascendente
     }
 };
-    int distanc[MAX];
-    bool visited[MAX];
-    int previous[MAX];
-    priority_queue<Node, vector<Node>, cmp> Q;
-    vector<Ticket*> node = ticketHandler->graphHandler();
-    
 
+class Graph 
+{
+public:
+    Graph();
+    void fillAdjList(std::vector<Ticket*> ticketStorage);
+    void getShortestpathByDijkstra(int start, int V);
+    void printPath(int);
+    void printFullPath();
+
+
+private:
+        std::vector<Node> adj[MAX];  // Lista de adyacencia
+        int distances[MAX];           // Distancias mínimas
+        bool visited[MAX];           // Marcador de nodos visitados
+        int previous[MAX];           // Vértice previo para reconstrucción de caminos
+        std::priority_queue<Node, std::vector<Node>, Compare> pq;  // Cola de prioridad
 };
 #endif

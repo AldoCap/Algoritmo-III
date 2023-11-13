@@ -35,9 +35,9 @@ string Ticket::getClientID()
 {
     return this->clientID; 
 } 
-void Ticket::closeTicket(string uuid)
+void Ticket::closeTicket()
 {
-    cout <<"Ticket numero: " << uuid << "  Se cerro con exito" << endl;  
+    this->setState("closed"); 
 }
 void Ticket::viewStatusTicket(string uuid)
 {

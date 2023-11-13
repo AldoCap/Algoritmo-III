@@ -7,15 +7,9 @@
 #include "./include/uuid.hpp"
 #include "./include/client.hpp"
 #include "./include/ticketHandler.hpp"
-<<<<<<< HEAD
 #include  "./include/telephoneRepresentative.hpp"
 #include  "./include/telephoneRepresentativeHandler.hpp"
-// #include "./include/grafo.hpp"
-=======
-#include "./include/telephoneRepresentative.hpp"
-#include "./include/telephoneRepresentativeHandler.hpp"
-#include "./include/grafo.hpp"
->>>>>>> a82d01d7b8cc636b3c119adb163a9fc5f788905a
+#include <grafo.hpp>
 
 
 void showMenu(); 
@@ -24,27 +18,24 @@ void updateTicket();
 void closeTicket(); 
 void viewStateTicket(); 
 void communication(); 
-<<<<<<< HEAD
-=======
-void graphs(); 
->>>>>>> a82d01d7b8cc636b3c119adb163a9fc5f788905a
 
 string clientID, clientID2, clientID3, clientID4, clientID5; 
+string ticketID, ticketID2, ticketID3, ticketID4, ticketID5; 
+Graph* graph = new Graph();
 ClientHandler* clientHandler = new ClientHandler();
 TelephoneRepresentativeHandler* telRepre = new TelephoneRepresentativeHandler();
 TicketHandler* ticketHandler = new TicketHandler();
 Ticket* ticket = new Ticket();
-Graph* graph = new Graph(); 
+int main() 
+{
+    ticketHandler->setGrafo(graph);
 
-int main() {
-    
     showMenu();
 
     delete clientHandler; 
     delete telRepre; 
     delete ticketHandler; 
     delete ticket; 
-    delete graph; 
 
     return 0;
 }
@@ -130,74 +121,51 @@ void createTicket(string priority,string description)
     clientData4["email"] = "JoaquinCapurro@aldo.com";
     clientData4["address"] = "Mendoza 321";
 
-   map<string, string> clientData5;
+    map<string, string> clientData5;
     clientData5["name"] = "Juan";
     clientData5["surname"] = "Capurro";
-<<<<<<< HEAD
     clientData5["email"] = "JuanCapurro@aldo.com";
     clientData5["address"] = "Luro 87";
-
-    clientID = clientHandler->createClient("1",clientData);
-    clientID2 = clientHandler->createClient("2",clientData2);
-    clientID3 = clientHandler->createClient("3",clientData3);
-    clientID4 = clientHandler->createClient("4",clientData4);
-    clientID5 = clientHandler->createClient("5",clientData5);
-=======
-    clientData5["email"] = "Capurro@aldo.com";
-    clientData5["address"] = "SanJuan 234";
 
     clientID = clientHandler->createClient(clientData);
     clientID2 = clientHandler->createClient(clientData2);
     clientID3 = clientHandler->createClient(clientData3);
     clientID4 = clientHandler->createClient(clientData4);
     clientID5 = clientHandler->createClient(clientData5);
->>>>>>> a82d01d7b8cc636b3c119adb163a9fc5f788905a
 
     string telRepreID= telRepre->create(telRepreData);
 
     clientHandler->readData(clientID);
     clientHandler->readData(clientID2);
 
-    // cout << "Dire 1: " << dire1 <<  "con id: "  << clientID <<std::endl;
-    // cout << "Dire 2: " << dire2 <<  "con id: "  << clientID2 <<std::endl;
-
-
     telRepre->readData(telRepreID);
 
-    ticketHandler->createTicket("10",telRepreID,clientID,priority,description);
-    ticketHandler->createTicket("20",telRepreID,clientID2,priority,description);
-    ticketHandler->createTicket("30",telRepreID,clientID3,priority,description);
-    ticketHandler->createTicket("40",telRepreID,clientID4,priority,description);
-    ticketHandler->createTicket("50",telRepreID,clientID5,priority,description);
+    ticketID = ticketHandler->createTicket(telRepreID,clientID,priority,description);
+    ticketID2 = ticketHandler->createTicket(telRepreID,clientID2,priority,description);
+    ticketID3 = ticketHandler->createTicket(telRepreID,clientID3,priority,description);
+    ticketID4 = ticketHandler->createTicket(telRepreID,clientID4,priority,description);
+    ticketID5 = ticketHandler->createTicket(telRepreID,clientID5,priority,description);
 
     ticketHandler->calculateShortestPath();
 
 } 
 void updateTicket()
-{
-    ticket->setState("En tratamiento");
+{   
+    ticketHandler->updateStatus(ticketID,"En tratamiento");
+
+    ticketHandler->viewTicket(ticketID);
 } 
 void closeTicket()
 {
-    ticket->closeTicket("2235"); 
+    ticketHandler->closeTicket(ticketID); 
+    ticketHandler->viewTicket(ticketID);
+
 }
 void viewStateTicket()
 {
-  cout << ticket->getState() << endl;  
+    ticketHandler->viewTicket(ticketID);
 }
 void communication()
 {
     ticketHandler->sendNotification("2235");  
 }
-<<<<<<< HEAD
-=======
-
-void graphs()
-{   
-    graph->init(); 
-    // aca tengo que llamar a clase o funcion para que inicieto grafo
-    ticketHandler->graphHandler(); 
-    graph->printGraph(); 
-     
-}
->>>>>>> a82d01d7b8cc636b3c119adb163a9fc5f788905a

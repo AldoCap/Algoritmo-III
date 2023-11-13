@@ -5,9 +5,9 @@ ClientHandler::ClientHandler()
 {
 }
 
-string ClientHandler::createClient(string id,map<string, string> clientData)
+string ClientHandler::createClient(map<string, string> clientData)
 {
-    Client* client = new Client(id,clientData["name"],clientData["surname"],clientData["email"], clientData["address"]);
+    Client* client = new Client(UuId::generateUuid(),clientData["name"],clientData["surname"],clientData["email"], clientData["address"]);
     this->clientStorage.push_back(client);
 
     std::cout << "\nCliente creado id: " << client->getID()<<std::endl;
@@ -44,10 +44,6 @@ void ClientHandler::readData(string clientID)
             cout << "\nClient address: " << client->getAddress()<<endl;
 
             // return client->getAddress();
-        }
-        else
-        {
-            cout << "\nuuid erroneo: No se pudo ver cliente"<<endl;
         }
     }
 }

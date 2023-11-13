@@ -4,70 +4,84 @@ Graph::Graph()
 {
     
 }
-void Graph::init() 
+void Graph::fillAdjList(std::vector<Ticket*> ticketStorage)
+{    
+    adj[0].push_back({1, 10,ticketStorage[1]});
+    adj[0].push_back({3, 20,ticketStorage[3]});
+    adj[1].push_back({0, 10,ticketStorage[0]});
+    adj[1].push_back({3, 20,ticketStorage[3]});
+    adj[2].push_back({3, 10,ticketStorage[3]});
+    adj[3].push_back({0, 20,ticketStorage[0]});
+    adj[3].push_back({1, 20,ticketStorage[1]});
+    adj[3].push_back({2, 20,ticketStorage[2]});
+    adj[4].push_back({2, 40,ticketStorage[2]});
+    adj[2].push_back({4, 40,ticketStorage[4]});
+}
+void Graph::getShortestpathByDijkstra(int start, int V)
 {
-    for (int i = 0; i <= V; ++i) {
-        this.distanc[i] = 1 << 30;
-        this.visited[i] = false;
-        this.previous[i] = -1;
+    
+    // Inicialización
+    for (int i = 0; i < V; ++i) 
+    {
+        distances[i] = std::numeric_limits<int>::max();  // Infinito inicialmente
+        visited[i]  = false;
+        previous[i] = -1;  // Sin vértice previo
     }
-}
 
-void Graph::relaxation(int current, int adyacente, int weight) {
-    if (distanc[current] + weight < distanc[adyacente]) {
-        distanc[adyacente] = distanc[current] + weight;
-        previous[adyacente] = current;
-        Q.push(Node(adyacente, distanc[adyacente]));
-    }
-}
+    distances[start] = 0;  // La distancia al inicio es 0
+    pq.push({start, 0});
 
-void Graph::dijkstra() {
-    int initial = 0; 
-    Graph::init();
-    Q.push(Node(initial, 0));
-    distanc[initial] = 0;
+    while (!pq.empty())
+    {
+        int u = pq.top().vertex;
+        pq.pop();
 
-    while (!Q.empty()) {
-        int current = Q.top().first;
-        Q.pop();
+        if (visited[u])
+        {
+            continue;  // Si ya se visitó este nodo, no lo proceses de nuevo
+        }
 
-        if (visited[current]) continue;
+        visited[u] = true;
 
-        visited[current] = true;
+        for (const Node& neighbor : adj[u])
+        {
+            int v = neighbor.vertex;
+            int weightUV = neighbor.weight;
 
-        for (int i = 0; i < ady[current].size(); ++i) {
-            int adyacente = ady[current][i].first;
-            int peso = ady[current][i].second;
-
-            if (!visited[adyacente]) {
-                relaxation(current, adyacente, peso);
+            if (!visited[v] && distances[u] + weightUV < distances[v]) {
+                distances[v] = distances[u] + weightUV;
+                previous[v] = u;
+                pq.push({v, distances[v]});
             }
         }
     }
 }
 
-void Graph::print(int destino) {
-    if (previous[destino] != -1) {
-        print(previous[destino]);
-    }
-    printf("%d ", destino);
-}
-
-void Graph::printGraph()
+// Función para imprimir el camino más corto desde el inicio hasta el destino
+void Graph::printPath(int destination) 
 {
-    srand(static_cast<unsigned>(time(0))); 
-
-    for (int i = 1; i < node.size(); ++i) {
-        int weight = rand() % 10 + 1; 
-        ady[0].push_back(Node(i, weight));
+    if (previous[destination] != -1) {
+        this->printPath(previous[destination]);
     }
-
-    this->dijkstra();
-
-    cout << "Distancias más cortas desde el vértice 0:\n";
-    for (int i = 0; i < node.size(); ++i) {
-        cout << "Vertice " << i << ": " << distanc[i] << "\tCamino: ";
-        print(i);
-        cout << endl;
-    }
+    std::cout << destination << " ";
 }
+void Graph::printFullPath()     
+{
+    for (int i = 0; i < 5; ++i) 
+    {
+        // std::string originClient       = adj[0][0].ticket->getClientID();
+        // std::string destinationClient  = adj[i][0].ticket->getClientID();
+
+        // std::string originClientAddress       = clientHandler->readData("2");
+        // std::string destinationClientAddress  = clientHandler->readData(destinationClient);
+        // clientHandler->readData("2");       
+        // " Hacia " << destinationClientAddress <<
+        // std::cout << "\nOrigen desde " <<  originClient <<std::endl;
+        // std::cout << "\nOrigen desde " <<  originClientAddress <<
+        // std::endl;
+
+        std::cout << "\nDistancia minima a " << i << ": " << distances[i] << ", Camino: ";
+        this->printPath(i);
+        std::cout << std::endl;
+    }  
+}    

@@ -107,6 +107,10 @@
     "xtree": "cpp",
     "xutility": "cpp",
     "random": "cpp",
-    "sstream": "cpp"
+    "sstream": "cpp",
+    "functional": "cpp",
+    "list": "cpp",
+    "unordered_map": "cpp",
+    "xhash": "cpp"
   }
 }

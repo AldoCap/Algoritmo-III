@@ -7,10 +7,11 @@ g++ -Wall -std=c++11 -I.\include\ -c .\src\telephoneRepresentative.cpp
 g++ -Wall -std=c++11 -I.\include\ -c .\src\telephoneRepresentativeHandler.cpp
 g++ -Wall -std=c++11 -I.\include\ -c .\src\uuid.cpp
 g++ -Wall -std=c++11 -I.\include\ -c .\src\incident.cpp
+g++ -Wall -std=c++11 -I.\include\ -c .\src\grafo.cpp
 g++ -Wall -std=c++11 -I.\include\ -c main.cpp
 
 :: Compilo el Binario
-g++ uuid.o incident.o client.o clientHandler.o ticket.o ticketHandler.o telephoneRepresentative.o telephoneRepresentativeHandler.o main.o -o app.exe
+g++ grafo.o uuid.o incident.o client.o clientHandler.o ticket.o ticketHandler.o telephoneRepresentative.o telephoneRepresentativeHandler.o main.o -o app.exe
 
 ::Borrar .o
 DEL .\*.o

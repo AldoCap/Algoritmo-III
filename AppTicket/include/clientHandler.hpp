@@ -14,7 +14,7 @@ class ClientHandler
 {
     public:
         ClientHandler(); 
-        string createClient(string id,map<string, string> clientData); 
+        string createClient(map<string, string> clientData); 
         void updateClient(string uuid,map<string, string> clientData); 
         void readData(string uuid);
         void deleteClient(string uuid);
