@@ -47,6 +47,8 @@ int main()
     delete telRepre; 
     delete ticketHandler; 
     delete ticket; 
+    delete incident1; 
+    delete incident2; 
 
     return 0;
 }
