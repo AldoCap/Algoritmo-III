@@ -4,7 +4,7 @@
 #include "./include/activityLog.hpp"
 #include "./include/communication.hpp"
 #include "./include/chatCommunication.hpp"
-#include "./include/emailcommunication.hpp"
+#include "./include/emailCommunication.hpp"
 #include "./include/ticket.hpp"
 #include "./include/uuid.hpp"
 #include "./include/client.hpp"
