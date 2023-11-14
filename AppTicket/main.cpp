@@ -3,6 +3,8 @@
 #include "./include/category.hpp"
 #include "./include/activityLog.hpp"
 #include "./include/communication.hpp"
+#include "./include/chatCommunication.hpp"
+#include "./include/emailcommunication.hpp"
 #include "./include/ticket.hpp"
 #include "./include/uuid.hpp"
 #include "./include/client.hpp"
@@ -18,12 +20,14 @@ void createTicket(string priority,string description);
 void updateTicket(); 
 void closeTicket(); 
 void viewStateTicket(); 
-void communication(); 
+void sendNotification(); 
 void addIncident();
 
 string clientID, clientID2, clientID3, clientID4, clientID5; 
 string telRepreID; 
 string ticketID, ticketID2, ticketID3, ticketID4, ticketID5; 
+ICommunication* emailCommunication = new EmailCommunication(); 
+ICommunication* chatCommunication = new ChatCommunication(); 
 Graph* graph = new Graph();
 ClientHandler* clientHandler = new ClientHandler();
 TelephoneRepresentativeHandler* telRepre = new TelephoneRepresentativeHandler();
@@ -35,6 +39,7 @@ Ticket* ticket = new Ticket();
 int main() 
 {
     ticketHandler->setGrafo(graph);
+    ticketHandler->setCommunicator(emailCommunication);
 
     showMenu();
 
@@ -87,11 +92,11 @@ void showMenu()
                 viewStateTicket(); 
                 break;
             case 5:
-                std::cout << "Ha seleccionado la Opcion 4." << std::endl;
-                viewStateTicket(); 
+                std::cout << "Ha seleccionado la Opcion 5." << std::endl;
+                sendNotification(); 
                 break;
             case 6:
-                std::cout << "Ha seleccionado la Opcion 4." << std::endl;
+                std::cout << "Ha seleccionado la Opcion 6." << std::endl;
                 addIncident(); 
                 break;
             case 0:
@@ -176,9 +181,9 @@ void viewStateTicket()
 {
     ticketHandler->viewTicket(ticketID);
 }
-void communication()
+void sendNotification()
 {
-    ticketHandler->sendNotification("2235");  
+    ticketHandler->sendNotification("HOLAAAAAAAAAAAAAAA",ticketID);
 }
 void addIncident()
 {

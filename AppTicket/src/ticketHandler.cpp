@@ -30,11 +30,10 @@ void TicketHandler::updateStatus(string ticketID,string ticketState)
     }
 }
 
-void TicketHandler::sendNotification(string ticketID)
+void TicketHandler::sendNotification(string message,string ticketID)
 {
-    // ICommunication* emailCommunication = new EmailCommunication(); 
-    // ICommunication* chatCommunication = new ChatCommunication(); 
-
+    this->communicator->sendMessage(message,ticketID);
+    this->communicator->viewMessages(ticketID);
 }
 
 void TicketHandler::closeTicket(string ticketID)
@@ -99,4 +98,8 @@ void TicketHandler::calculateShortestPath()
 void TicketHandler::setGrafo(Graph* graph)
 {
     this->graph = graph;
+}
+void TicketHandler::setCommunicator(ICommunication* communicator)
+{
+    this->communicator = communicator;
 }

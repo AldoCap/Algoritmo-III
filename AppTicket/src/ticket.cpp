@@ -51,6 +51,7 @@ void Ticket::setIncident(Incident* incident)
 {
     this->incidents.push_back(incident);
 }
+
 void Ticket::viewIncidents()
 {
     for (Incident* incident : this->incidents) 

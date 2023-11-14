@@ -3,8 +3,7 @@
 #include <string>
 #include <iostream>
 #include <telephoneRepresentativeHandler.hpp>
-#include <emailCommunication.hpp>
-#include <chatCommunication.hpp>
+#include <communication.hpp>
 #include <clientHandler.hpp>
 #include <ticket.hpp>
 #include <incident.hpp>
@@ -21,8 +20,9 @@ class TicketHandler
         TicketHandler();  
         string createTicket(string representativeID, string clientID,string priority,string description); 
         void updateStatus(string ticketID,string ticketState); 
-        void sendNotification(string ticketID);
+        void sendNotification(string message,string ticketID);
         void closeTicket(string ticketID);  
+        void setCommunicator(ICommunication* communicator);
         void viewTicket(string ticketID); 
         void addIncident(Incident* incident,string ticketID); 
         void calculateShortestPath();
@@ -31,6 +31,7 @@ class TicketHandler
         
     private: 
         TelephoneRepresentativeHandler* telRepreHandler;
+        ICommunication* communicator;
         ClientHandler* clientHandler;  
         string representativeId, nameClient,surnameClient,idClient, description; 
         int maxLength = 100; 

@@ -7,10 +7,11 @@ using namespace std;
 class EmailCommunication : public ICommunication
 {
 private:
-    
+    map<string,string> messages;
 public:
     EmailCommunication();
     ~EmailCommunication();
-    void sendMessage(string);
+    void sendMessage(string message,string target);
+    void viewMessages(string target);
 };
 #endif
