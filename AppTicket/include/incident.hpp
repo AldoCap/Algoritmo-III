@@ -7,19 +7,20 @@ using namespace std;
 class Incident 
 {
     public:
-        Incident(string representativeId, 
-                        string category, string idClient);  
+        Incident(string ID,string representativeId, 
+                        string category, string clientID,string description);  
         string getName(); 
         void  setName(string nameClient); 
         void setDescription(string description);
         string getDescription();  
         string getCategory(); 
+        string getID(); 
         void setCategory(string category); 
         ~Incident(); 
         
     private: 
-        string representativeId, nameClient, 
-            category,idClient, description; 
+        string ID, representativeId, nameClient, 
+            category,clientID, description; 
 
 };
 

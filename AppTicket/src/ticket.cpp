@@ -51,6 +51,15 @@ void Ticket::setIncident(Incident* incident)
 {
     this->incidents.push_back(incident);
 }
+void Ticket::viewIncidents()
+{
+    for (Incident* incident : this->incidents) 
+    {
+            cout << "\nIncident ID: " << incident->getID()<<endl;
+            cout << "\nIncident state: " << incident->getCategory()<<endl;
+            cout << "\nIncident description: " << incident->getDescription()<<endl;
+    }
+}
 Ticket::~Ticket()
 {
 

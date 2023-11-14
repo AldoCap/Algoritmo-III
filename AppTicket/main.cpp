@@ -10,6 +10,7 @@
 #include  "./include/telephoneRepresentative.hpp"
 #include  "./include/telephoneRepresentativeHandler.hpp"
 #include <grafo.hpp>
+#include <incident.hpp>
 
 
 void showMenu(); 
@@ -18,13 +19,18 @@ void updateTicket();
 void closeTicket(); 
 void viewStateTicket(); 
 void communication(); 
+void addIncident();
 
 string clientID, clientID2, clientID3, clientID4, clientID5; 
+string telRepreID; 
 string ticketID, ticketID2, ticketID3, ticketID4, ticketID5; 
 Graph* graph = new Graph();
 ClientHandler* clientHandler = new ClientHandler();
 TelephoneRepresentativeHandler* telRepre = new TelephoneRepresentativeHandler();
 TicketHandler* ticketHandler = new TicketHandler();
+Incident* incident1 = new Incident("1",telRepreID,"OPEN",ticketID,"Primer incidencia del ticket");
+Incident* incident2 = new Incident("2",telRepreID,"OPEN",ticketID,"Segunda incidencia del ticket");
+
 Ticket* ticket = new Ticket();
 int main() 
 {
@@ -54,6 +60,7 @@ void showMenu()
         std::cout << "3. Cerrar Ticket" << std::endl;
         std::cout << "4. Ver estado Ticket" << std::endl;
         std::cout << "5. Communication" << std::endl;
+        std::cout << "6. Agregar incidente" << std::endl;
         std::cout << "0. Salir" << std::endl;
         std::cout << "Elija una opcion: ";
         std::cin >> choice;
@@ -82,6 +89,10 @@ void showMenu()
             case 5:
                 std::cout << "Ha seleccionado la Opcion 4." << std::endl;
                 viewStateTicket(); 
+                break;
+            case 6:
+                std::cout << "Ha seleccionado la Opcion 4." << std::endl;
+                addIncident(); 
                 break;
             case 0:
                 std::cout << "Saliendo del programa." << std::endl;
@@ -133,7 +144,7 @@ void createTicket(string priority,string description)
     clientID4 = clientHandler->createClient(clientData4);
     clientID5 = clientHandler->createClient(clientData5);
 
-    string telRepreID= telRepre->create(telRepreData);
+    telRepreID = telRepre->create(telRepreData);
 
     clientHandler->readData(clientID);
     clientHandler->readData(clientID2);
@@ -168,4 +179,11 @@ void viewStateTicket()
 void communication()
 {
     ticketHandler->sendNotification("2235");  
+}
+void addIncident()
+{
+    std::cout << "Ticket >>>>> " << ticketID<<std::endl;
+
+    ticketHandler->addIncident(incident1,ticketID);
+    ticketHandler->addIncident(incident2,ticketID);
 }

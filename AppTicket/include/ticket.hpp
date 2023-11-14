@@ -20,6 +20,7 @@ class Ticket
         string getID();
         string getState();
         string getClientID();
+        void viewIncidents(); 
         void setIncident(Incident* incident);
         ~Ticket(); 
         

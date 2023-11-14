@@ -73,10 +73,13 @@ void TicketHandler::addIncident(Incident* incident,string ticketID)
         if(ticket->getID() == ticketID)
         {
             ticket->setIncident(incident);
+            std::cout << "---------------------------------------------"<<std::endl;
+            ticket->viewIncidents();
+            std::cout << "---------------------------------------------"<<std::endl;
         }
         else
         {
-            cout << "\nuuid erroneo: No se puedo agregar incidente"<<endl;
+            // cout << "\nuuid erroneo: No se puedo agregar incidente"<<endl;
         }
     }
 }
