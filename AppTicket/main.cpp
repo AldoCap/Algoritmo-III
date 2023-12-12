@@ -143,18 +143,26 @@ void createTicket(string priority,string description)
     clientData5["email"] = "JuanCapurro@aldo.com";
     clientData5["address"] = "Luro 87";
 
+    std::cout << "\n----------------------------------------------"<<std::endl;
     clientID = clientHandler->createClient(clientData);
     clientID2 = clientHandler->createClient(clientData2);
     clientID3 = clientHandler->createClient(clientData3);
     clientID4 = clientHandler->createClient(clientData4);
     clientID5 = clientHandler->createClient(clientData5);
+    std::cout << "\n----------------------------------------------"<<std::endl;
 
     telRepreID = telRepre->create(telRepreData);
 
     clientHandler->readData(clientID);
     clientHandler->readData(clientID2);
+    clientHandler->readData(clientID3);
+    clientHandler->readData(clientID4);
+    clientHandler->readData(clientID5);
+    std::cout << "\n----------------------------------------------"<<std::endl;
 
     telRepre->readData(telRepreID);
+
+    std::cout << "\n----------------------------------------------"<<std::endl;
 
     ticketID = ticketHandler->createTicket(telRepreID,clientID,priority,description);
     ticketID2 = ticketHandler->createTicket(telRepreID,clientID2,priority,description);
@@ -162,12 +170,17 @@ void createTicket(string priority,string description)
     ticketID4 = ticketHandler->createTicket(telRepreID,clientID4,priority,description);
     ticketID5 = ticketHandler->createTicket(telRepreID,clientID5,priority,description);
 
+    std::cout << "\n----------------------------------------------"<<std::endl;
+
+
     ticketHandler->calculateShortestPath();
+
+    std::cout << "\n----------------------------------------------"<<std::endl;
 
 } 
 void updateTicket()
 {   
-    ticketHandler->updateStatus(ticketID,"En tratamiento");
+    ticketHandler->updateStatus(ticketID,"PROCESSING");
 
     ticketHandler->viewTicket(ticketID);
 } 
@@ -183,7 +196,8 @@ void viewStateTicket()
 }
 void sendNotification()
 {
-    ticketHandler->sendNotification("HOLAAAAAAAAAAAAAAA",ticketID);
+    std::string message = "Su ticket se encuentra en estado: " + ticketHandler->getState(ticketID);
+    ticketHandler->sendNotification(message, ticketID);
 }
 void addIncident()
 {

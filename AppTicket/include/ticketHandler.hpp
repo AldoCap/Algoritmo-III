@@ -27,6 +27,7 @@ class TicketHandler
         void addIncident(Incident* incident,string ticketID); 
         void calculateShortestPath();
         void setGrafo(Graph* graph);
+        std::string getState(std::string ticketID);
         ~TicketHandler(); 
         
     private: 

@@ -103,3 +103,13 @@ void TicketHandler::setCommunicator(ICommunication* communicator)
 {
     this->communicator = communicator;
 }
+std::string TicketHandler::getState(std::string ticketID)
+{
+    for (Ticket* ticket : this->ticketStorage) 
+    {
+        if(ticket->getID() == ticketID)
+        {
+            return ticket->getState();
+        }
+    }
+}
